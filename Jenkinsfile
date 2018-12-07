@@ -7,14 +7,13 @@ node('linux') {
         junit 'reports/result.xml'
     }
     stage("Build") {
-        sh 'ant -f build.xml'
+        sh 'ant -f build.xml -v'
     }
     stage("Deploy") {
-        echo 'deploy'
+        echo 'deploy copies output jar file  - rectangle-2.jar into an S3 bucket'
     }
     stage("Report") {
-        // sh "aws ec2 run-instances --image-id ami-467ca739 --count 1 --instance-type t2.micro --key-name SEIS665-demo --security-group-ids sg-0fc84e78 --region us-east-1"
-       echo 'report'
+        sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
     }
        
 }
