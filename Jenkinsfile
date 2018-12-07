@@ -10,7 +10,7 @@ node('linux') {
         sh 'ant -f build.xml -v'
     }
     stage("Deploy") {
-        echo 'deploy $JENKINS_HOME'
+        echo 'deploy %JENKINS_HOME%'
         // sh 'aws s3 cp  rectangle-%BUILD_NUMBER%.jar s3://SEIS665a10Jenkins'
     }
     stage("Report") {
