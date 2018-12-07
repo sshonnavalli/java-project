@@ -11,7 +11,7 @@ node('linux') {
     }
     stage("Deploy") {
         sh 'echo "deploy ${JENKINS_HOME}"'
-        sh 'aws s3 cp /workspace/java-pipeline/dist/*.jar s3://SEIS665a10Jenkins'
+        sh 'aws s3 cp /workspace/java-pipeline/dist/*.jar s3://seis665a10Jenkins/'
     }
     stage("Report") {
         echo 'report'
