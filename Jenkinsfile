@@ -10,7 +10,7 @@ node('linux') {
         sh 'ant -f build.xml -v'
     }
     stage("Deploy") {
-        sh 'sudo aws s3 cp  rectangle-$(BUILD_NUMBER).jar s3://SEIS665a10Jenkins'
+        sh 'aws s3 cp  rectangle-%BUILD_NUMBER%.jar s3://SEIS665a10Jenkins'
     }
     stage("Report") {
         echo 'report'
