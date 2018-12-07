@@ -10,10 +10,11 @@ node('linux') {
         sh 'ant -f build.xml -v'
     }
     stage("Deploy") {
-        echo 'deploy copies output jar file  - rectangle-2.jar into an S3 bucket'
+        sh 'sudo aws s3 cp  rectangle-$(BUILD_NUMBER).jar s3://SEIS665a10Jenkins'
     }
     stage("Report") {
-        sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
+        echo 'report'
+        // sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
     }
        
 }
